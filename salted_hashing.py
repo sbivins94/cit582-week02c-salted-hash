@@ -1,11 +1,15 @@
 import hashlib
 import os
 
+
+SIZE = 64
+
+
 def myhash(m):
     #Generate random nonce
-    nonce = 0
+    nonce = os.urandom(SIZE)
     #Generate hex digest
-    h_hex = 0
+    h_hex = hashlib.sha256(nonce + m.encode('utf-8')).hexdigest()
     return nonce, h_hex
 
 
